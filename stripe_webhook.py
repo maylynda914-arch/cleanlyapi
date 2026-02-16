@@ -2,7 +2,8 @@ from fastapi import APIRouter, Request, HTTPException
 import stripe
 import json
 import os
-from main import load_users, save_users
+from utils import load_users, save_users
+
 from secrets import token_hex
 
 router = APIRouter()
@@ -50,3 +51,4 @@ async def stripe_webhook(request: Request):
         save_users(data)
 
     return {"status": "success"}
+
